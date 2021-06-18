@@ -26,7 +26,7 @@ public class Config {
     public static DesiredCapabilities getPixel4Android10DesiredCapabilities1() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("sessionName", "Azure DevOps session");
-        capabilities.setCapability("sessionDescription", "-- ** --");
+        capabilities.setCapability("sessionDescription", "June-2021");
         capabilities.setCapability("deviceOrientation", "portrait");
         capabilities.setCapability("noReset", false);
         capabilities.setCapability("fullReset", true);
