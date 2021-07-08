@@ -10,13 +10,19 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: Maven@3
+- task: Kobiton.Kobiton.trigger-automation-test-release-task.Trigger-automation-test@2
+  displayName: 'Kobiton Automation Test Executor'
   inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
+    Kobiton: 'Kobiton API Service'
+    remote-server: 'Kobiton Executor Server service'
+    gitRepo: 'https://github.com/leslietannh/AzureDevops-appium-script-2686762'
+    gitBranch: master
+    gitSSH: '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'
+    deviceName: 'Galaxy S7'
+    devicePlatformVersion: Android
+    devicePlatformName: Android
+    commands: 'mvn test'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    logType: combined
     goals: 'package'
