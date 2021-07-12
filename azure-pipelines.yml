@@ -10,6 +10,11 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: 'npm install'
+    
 - task: Kobiton.Kobiton.trigger-automation-test-release-task.Trigger-automation-test@2
   displayName: 'Kobiton Automation Test Executor'
   inputs:
