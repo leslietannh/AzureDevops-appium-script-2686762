@@ -10,22 +10,19 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- checkout: self
+  persistCredentials: true
 - task: Bash@3
   inputs:
     targetType: 'inline'
     script: 'npm install'
-    
-- task: Kobiton.Kobiton.trigger-automation-test-release-task.Trigger-automation-test@2
-  displayName: 'Kobiton Automation Test Executor'
+- task: Maven@3
   inputs:
-    gitRepo: 'https://github.com/leslietannh/AzureDevops-appium-script-2686762'
-    gitBranch: master
-    gitSSH: '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'
-    deviceName: 'Galaxy S7'
-    devicePlatformVersion: Android
-    devicePlatformName: Android
-    commands: 'mvn test'
+    mavenPomFile: 'pom.xml'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    logType: combined
-    goals: 'package'
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
